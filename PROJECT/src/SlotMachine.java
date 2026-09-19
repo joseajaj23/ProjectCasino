@@ -24,7 +24,6 @@ public class SlotMachine extends Game{
         slotMachineRun(player,casino);
         getPlayerPlaying().remove(player);
         slotMachineRun(player,casino);
-        getPlayerPlaying().remove(player);
 
     }
     private void setSlots(){

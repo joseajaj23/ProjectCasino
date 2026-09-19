@@ -86,7 +86,11 @@ public class Table {
                     case "2"->{games.get(0).playGame(player,casino);}
                     case "3"->{games.get(2).playGame(player,casino);}
                     case "4" ->{run = false;}
-                    case "5" ->{playersAtTable.remove(player); player.setState("Left table"); run = false;}
+                    case "5" ->{
+                        playersAtTable.remove(player);
+                        player.setState("Left table");
+                        removePlayer(this,player);
+                        run = false;}
 
 
                 }
@@ -103,7 +107,11 @@ public class Table {
     public ArrayList<Player> getPlayersAtTable() {
         return playersAtTable;
     }
-
+    private void removePlayer(Table table,Player player){
+    for(Game gameIn : table.getGames()){
+    gameIn.getPlayerPlaying().remove(player);
+    }
+    }
     protected void getInfo(){
     IO.println(tableID);
     IO.println("PlayerAtTables");

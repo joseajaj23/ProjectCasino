@@ -29,6 +29,7 @@ public class BlackJack extends Game{
 
         if(addNewGame){player.getPlayerGameHistories().add(new PlayerGameHistory(this));}
         runGame(player,casino);
+
     }
 
 
@@ -51,12 +52,13 @@ public class BlackJack extends Game{
     }
 
     if(cardsOnTableToPlay.isEmpty()){cardsOnTableToPlay = new ArrayList<>(cards);}
-    setTotalBets();
+
     giveCard(2);
     readCard("player");
     boolean runInner = true;
     double currentBet = bet;
     while(runInner){
+        setTotalBets();
     double betIn = askWhatToDoNext(bet);
         if(betIn >= currentBet){bet = betIn; runInner = false;}
     readCard("player");
@@ -91,7 +93,7 @@ public class BlackJack extends Game{
         for(PlayerGameHistory gameH : player.getPlayerGameHistories()){
             if(gameH.getGame().getName().equals(this.getName())){gameH.UpdateHistory("lose");}
         }
-        setTotalPayouts(bet);
+        this.setTotalPayouts(bet);
         casino.getBank().setBalance(bet);
     }
 

@@ -30,7 +30,7 @@ public class Roullete extends Game{
         int numb = 37;
 
         while (numb > 0) {
-            setTotalBets();
+            this.setTotalBets();
             if(numb > 35){
                 do {
                     IO.println("What number do you wanna bet on from 1 to 35;");
@@ -58,7 +58,7 @@ public class Roullete extends Game{
             for(PlayerGameHistory gameH : player.getPlayerGameHistories()){
             if(gameH.getGame().getName().equals(this.getName())){gameH.UpdateHistory("lose");}
             }
-            setTotalPayouts(bet);
+            this.setTotalPayouts(bet);
             casino.getBank().setBalance(bet);
             }
             numb = changeBet(numb);
